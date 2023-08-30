@@ -28,6 +28,9 @@
   overflow: hidden; /* To hide overflowing text */
 }
 
+
+
+
 .motion-txt h2 {
   font-size: 3rem;
   margin-top: 1rem;
@@ -69,4 +72,22 @@
   border: 1px solid blueviolet;
   color: white;
   border-radius: 8px;
+}
+
+
+@media screen and (max-width: 680px){
+  
+.motion-txt h1{
+  font-size: 2rem;
+  overflow-x: auto;
+}
+
+.motion-txt h2{
+  font-size: 2rem;
+}
+
+.header-button button {
+  width: 30%;
+}
+
 }

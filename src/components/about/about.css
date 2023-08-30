@@ -36,7 +36,7 @@
 .about-work__item img {
   width: 350px;
   height: 300px;
-  border-radius: 30px;
+  border-radius: 20px;
 }
 
 .about-work__item-txt {
@@ -52,4 +52,26 @@
 .about-work__item h2 {
   width: 100%;
   text-align: left;
+}
+
+@media screen and (max-width: 680px){
+.about-work__item {
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+.about-work__item-txt {
+  width: 100%;
+  margin-top: 1rem;
+  
+}
+
+.about-work__item p {
+  margin-top: 1rem;
+}
+
+.about h1{
+  font-size: 1.7rem;
+}
+
 }

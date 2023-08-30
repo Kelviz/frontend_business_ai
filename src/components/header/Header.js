@@ -34,7 +34,7 @@ const Header = () => {
         <h2 className="txt-blue">#BusinessIdeas</h2>
         <p>
           Unlock the Power of Innovation: Enter your industry, define your
-          target audience, and set <br /> your budget to embark on a journey of
+          target audience, and set your budget to embark on a journey <br /> of
           transformative business ideas.
         </p>
         <div className="header-plane__animation">

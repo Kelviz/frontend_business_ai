@@ -5,6 +5,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 7rem;
+  padding-bottom: 5rem;
 }
 
 .scroll-main h1 {
@@ -74,4 +76,13 @@
   width: 100%;
   text-align: justify;
   margin-top: 2rem;
+}
+
+@media screen and (max-width: 680px){
+  
+.scroll-main h1{
+  font-size: 1.7rem;
+  margin-bottom: 3rem;
+}
+
 }

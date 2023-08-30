@@ -56,3 +56,12 @@ nav {
 .signup:hover {
   opacity: 0.7;
 }
+
+
+@media screen and (max-width: 680px){
+.signup{
+  display: none;
+}
+  
+}
+  

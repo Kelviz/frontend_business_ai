@@ -37,7 +37,7 @@ const ScrollCards = () => {
 
   return (
     <div className="scroll-main">
-      <h1>Unlock Your Entrepreneurial Journey</h1>
+      <h1>AI Generated Business Idea Samples</h1>
       <button className="button-left" onClick={handleLeftArrowClick}>
         <img src={LeftArrowIcon} alt="left-arrow" />
       </button>
