@@ -8,7 +8,7 @@ const IdeaCard = ({ item }) => {
       </div>
 
       <div className="card-txt">
-        <h2>{item.industry}</h2>
+        <h3>{item.industry}</h3>
 
         <p>{item.idea}</p>
       </div>

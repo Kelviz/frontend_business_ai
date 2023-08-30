@@ -219,3 +219,15 @@ div .dot {
     transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
   }
 }
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}

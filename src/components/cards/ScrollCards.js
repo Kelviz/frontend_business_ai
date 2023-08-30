@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import "react-horizontal-scrolling-menu/dist/styles.css";
 
@@ -21,40 +21,41 @@ const ScrollCards = () => {
     fetchCards();
   }, []);
 
-  const LeftArrow = () => {
-    const { scrollPrev } = useContext(VisibilityContext);
+  const containerRef = useRef(null);
 
-    return (
-      <div onClick={() => scrollPrev()} className="right-arrow">
-        <img src={LeftArrowIcon} alt="right-arrow" />
-      </div>
-    );
+  const handleLeftArrowClick = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollLeft -= 200; // Adjust the scroll amount as needed
+    }
   };
 
-  const RightArrow = () => {
-    const { scrollNext } = useContext(VisibilityContext);
-
-    return (
-      <div onClick={() => scrollNext()} className="left-arrow">
-        <img src={RightArrowIcon} alt="right-arrow" />
-      </div>
-    );
+  const handleRightArrowClick = () => {
+    if (containerRef.current) {
+      containerRef.current.scrollLeft += 200; // Adjust the scroll amount as needed
+    }
   };
 
   return (
-    <div className="horizontal-scrolling-container">
-      <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+    <div className="scroll-main">
+      <h1>Unlock Your Entrepreneurial Journey</h1>
+      <button className="button-left" onClick={handleLeftArrowClick}>
+        <img src={LeftArrowIcon} alt="left-arrow" />
+      </button>
+      <div className="horizontal-scrolling-container" ref={containerRef}>
         {cards.map((item) => (
           <div
             className="horizontal-scrolling-card"
             key={item.id}
-            itemID={item.id}
-            title={item.title}
+            itemId={item.id}
+            title={item.id}
           >
             <IdeaCard item={item} />
           </div>
         ))}
-      </ScrollMenu>
+      </div>
+      <button className="button-right" onClick={handleRightArrowClick}>
+        <img src={RightArrowIcon} alt="left-arrow" />
+      </button>
     </div>
   );
 };
