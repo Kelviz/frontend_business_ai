@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import axios from "axios";
 
 import "./about.css";
@@ -21,7 +22,13 @@ const About = () => {
       <h1>Unlock Your Entrepreneurial Journey</h1>
       <div className="about-works">
         {about.map((item) => (
-          <div className="about-work__item" key={item.id}>
+          <motion.div
+            whileInView={{ opacity: 1 }}
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.5, type: "tween" }}
+            className="about-work__item"
+            key={item.id}
+          >
             <div className="about-work__item-img">
               <img src={item.image} alt={item.title} />
             </div>
@@ -29,7 +36,7 @@ const About = () => {
               <h2 className="txt-blue">{item.title}</h2>
               <p>{item.body}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

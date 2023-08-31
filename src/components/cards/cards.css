@@ -13,6 +13,7 @@
   width: 100%;
   text-align: center;
   color: #fff;
+  margin-bottom: 3rem;
 }
 .horizontal-scrolling-container {
   width: 100%;
@@ -78,11 +79,9 @@
   margin-top: 2rem;
 }
 
-@media screen and (max-width: 680px){
-  
-.scroll-main h1{
-  font-size: 1.7rem;
-  margin-bottom: 3rem;
-}
-
+@media screen and (max-width: 680px) {
+  .scroll-main h1 {
+    font-size: 1.7rem;
+    margin-bottom: 3rem;
+  }
 }

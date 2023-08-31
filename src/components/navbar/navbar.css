@@ -15,6 +15,11 @@ nav {
   color: var(--primary-color);
 }
 
+.navbar-logo__link {
+  text-decoration: none;
+  color: #fff;
+}
+
 .txt-blue {
   color: var(--blue-color);
 }
@@ -57,11 +62,8 @@ nav {
   opacity: 0.7;
 }
 
-
-@media screen and (max-width: 680px){
-.signup{
-  display: none;
+@media screen and (max-width: 680px) {
+  .signup {
+    display: none;
+  }
 }
-  
-}
-  

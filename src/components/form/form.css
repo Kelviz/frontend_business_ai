@@ -1,0 +1,141 @@
+.form-data {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding: 5rem 3rem;
+  color: #fff;
+}
+
+.form-data form {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 100%;
+}
+
+.form-data__item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-data__img {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-data__item img {
+  width: 200px;
+  height: 200px;
+}
+
+.form-txt {
+  width: 500px;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-data__item input {
+  width: 500px;
+  margin-top: 2rem;
+  padding: 13px 5px;
+  background-color: #383737;
+  border: 1px solid #383737;
+  border-radius: 5px;
+
+  color: #fff;
+}
+
+.form-txt p {
+  margin-top: 1rem;
+}
+
+.form-data__btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.form-data__btn button {
+  width: auto;
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+  margin: 0.5rem;
+}
+
+.ideacard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ideacard-img {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ideacard-img img {
+  width: 100px;
+  height: 100px;
+}
+
+.ideacard-txt {
+  width: 60%;
+}
+
+.ideacard-txt p {
+  margin-top: 1rem;
+  text-align: justify;
+  font-size: 17px;
+}
+
+.ideacard-loader {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.ideacard-loader p {
+  text-align: center;
+}
+
+.ideacard-links {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.ideacard-link {
+  width: auto;
+  background: blueviolet;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin: 1rem;
+  text-decoration: none;
+}
+
+.error {
+  color: crimson;
+  margin-top: 2rem;
+}
