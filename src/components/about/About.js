@@ -4,7 +4,7 @@ import axios from "axios";
 import "./about.css";
 
 const About = () => {
-  const [about, setAbout] = useState([]);
+  const [abou, setAbout] = useState([]);
 
   useEffect(() => {
     const fetchAbout = async () => {
@@ -21,7 +21,7 @@ const About = () => {
       <h1>Unlock Your Entrepreneurial Journey</h1>
       <div className="about-works">
         {about.map((item) => (
-          <div className="about-work__item" key={item.id}>
+          <div className="about-work__item lineUp" key={item.id}>
             <div className="about-work__item-img">
               <img src={item.image} alt={item.title} />
             </div>
