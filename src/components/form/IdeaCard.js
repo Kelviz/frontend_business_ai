@@ -21,8 +21,10 @@ const IdeaCard = ({ businessIdea }) => {
         ))
       ) : (
         <div className="ideacard-loader">
-          <p>wait while AI generate business idead</p>
           <Loader />
+          <p>
+            I'm excited to come up with a business ideas for you! Just a moment.
+          </p>
         </div>
       )}
 
