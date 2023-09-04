@@ -69,7 +69,7 @@ const MultiStepForm = () => {
           )}
           {currentStep === 1 && (
             <motion.div
-              initial={{ x: -500 }}
+              initial={currentStep > 1 ? { x: -500 } : { x: 500 }}
               animate={{ x: 0 }}
               transition={{ duration: 0.5, type: "tween" }}
               className="form-data__item"
@@ -101,7 +101,7 @@ const MultiStepForm = () => {
 
           {currentStep === 2 && (
             <motion.div
-              initial={{ x: -500 }}
+              initial={currentStep > 1 ? { x: -500 } : { x: 500 }}
               animate={{ x: 0 }}
               transition={{ duration: 0.5, type: "tween" }}
               className="form-data__item"
@@ -130,7 +130,7 @@ const MultiStepForm = () => {
 
           {currentStep === 3 && (
             <motion.div
-              initial={{ x: -500 }}
+              initial={currentStep > 1 ? { x: -500 } : { x: 500 }}
               animate={{ x: 0 }}
               transition={{ duration: 0.5, type: "tween" }}
               className="form-data__item"
@@ -157,45 +157,51 @@ const MultiStepForm = () => {
             </motion.div>
           )}
           <div className="form-data__btn">
-            {currentStep > 1 && (
+            <div>
+              {currentStep > 1 && (
+                <button
+                  type="button"
+                  className="prev"
+                  rel="prev"
+                  onClick={() => setCurrentStep(currentStep - 1)}
+                >
+                  &lt; Previous
+                </button>
+              )}
+
               <button
                 type="button"
-                onClick={() => setCurrentStep(currentStep - 1)}
+                className="next"
+                rel="next"
+                onClick={() => {
+                  if (currentStep === 1) {
+                    if (formData.industry.trim() === "") {
+                      setIndustryError("Industry is required");
+                    } else {
+                      setIndustryError("");
+                      setCurrentStep(currentStep + 1);
+                    }
+                  } else if (currentStep === 2) {
+                    if (formData.audience.trim() === "") {
+                      setAudienceError("Audience is required");
+                    } else {
+                      setAudienceError("");
+                      setCurrentStep(currentStep + 1);
+                    }
+                  } else if (currentStep === 3) {
+                    if (formData.budget.trim() === "") {
+                      setBudgetError("Budget is required");
+                    } else {
+                      setBudgetError("");
+
+                      handleSubmit();
+                    }
+                  }
+                }}
               >
-                Previous
+                Next &gt;
               </button>
-            )}
-
-            <button
-              type="button"
-              onClick={() => {
-                if (currentStep === 1) {
-                  if (formData.industry.trim() === "") {
-                    setIndustryError("Industry is required");
-                  } else {
-                    setIndustryError("");
-                    setCurrentStep(currentStep + 1);
-                  }
-                } else if (currentStep === 2) {
-                  if (formData.audience.trim() === "") {
-                    setAudienceError("Audience is required");
-                  } else {
-                    setAudienceError("");
-                    setCurrentStep(currentStep + 1);
-                  }
-                } else if (currentStep === 3) {
-                  if (formData.budget.trim() === "") {
-                    setBudgetError("Budget is required");
-                  } else {
-                    setBudgetError("");
-
-                    handleSubmit();
-                  }
-                }
-              }}
-            >
-              Next
-            </button>
+            </div>
           </div>
         </form>
       )}

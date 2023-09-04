@@ -61,18 +61,100 @@
 }
 
 .form-data__btn {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
+  margin: 0 auto;
+  display: table;
 }
 
-.form-data__btn button {
-  width: auto;
-  background: #000;
-  color: #fff;
+.form-data__btn div {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.prev,
+.next {
+  /* only modern browser */
+  background-color: #000;
   border: 1px solid #000;
-  margin: 0.5rem;
+}
+.prev:not(:nth-child(1n + 3)),
+.next:not(:nth-child(1n + 3)) {
+  font-size: 1em;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  *zoom: 1;
+  *display: inline;
+  text-indent: -9999px;
+  width: 5em;
+  height: 5em;
+  position: relative;
+  overflow: hidden;
+}
+.prev:not(:nth-child(1n + 3)):before,
+.prev:not(:nth-child(1n + 3)):after,
+.next:not(:nth-child(1n + 3)):before,
+.next:not(:nth-child(1n + 3)):after {
+  -moz-transition: background-color 0.2s ease-out;
+  -o-transition: background-color 0.2s ease-out;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  content: "";
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  height: 1px;
+  background-color: #cd5c4d;
+  top: 50%;
+}
+.prev:not(:nth-child(1n + 3)):hover:before,
+.prev:not(:nth-child(1n + 3)):hover:after,
+.next:not(:nth-child(1n + 3)):hover:before,
+.next:not(:nth-child(1n + 3)):hover:after {
+  background-color: #292b30;
+}
+
+.prev:not(:nth-child(1n + 3)):after {
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.prev:not(:nth-child(1n + 3)):before {
+  -moz-transform-origin: 0 100%;
+  -ms-transform-origin: 0 100%;
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.next:not(:nth-child(1n + 3)):after {
+  -moz-transform-origin: 100% 100%;
+  -ms-transform-origin: 100% 100%;
+  -webkit-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.next:not(:nth-child(1n + 3)):before {
+  -moz-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .ideacard {
@@ -108,6 +190,7 @@
 .ideacard-loader {
   width: 60%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;

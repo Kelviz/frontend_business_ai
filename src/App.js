@@ -7,19 +7,25 @@ import Home from "./components/home/Home";
 import Footer from "./components/footer/Footer";
 import IdeaList from "./components/ideaList/IdeaList";
 import IdeaDetail from "./components/ideaList/IdeaDetail";
+import Login from "./components/account/Login";
+import { Provider } from "react-redux";
+import store from "./store";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="form" element={<MultiStepForm />} />
-        <Route path="idea-list" element={<IdeaList />} />
-        <Route path="idea-detail/:ideaId" element={<IdeaDetail />} />
-      </Routes>
+      <Provider store={store}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="form" element={<MultiStepForm />} />
+          <Route path="idea-list" element={<IdeaList />} />
+          <Route path="idea-detail/:ideaId" element={<IdeaDetail />} />
+          <Route path="login" element={<Login />} />
+        </Routes>
 
-      <Footer />
+        <Footer />
+      </Provider>
     </>
   );
 }
