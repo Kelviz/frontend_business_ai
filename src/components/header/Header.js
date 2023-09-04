@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import "./header.css";
 
@@ -50,7 +51,12 @@ const Header = () => {
           </div>
         </div>
         <div className="header-button">
-          <button>Get started free</button>
+          <button>
+            <Link to="form" className="header-button__link">
+              {" "}
+              Get started free
+            </Link>
+          </button>
         </div>
       </div>
       <div className="wrapper">
