@@ -10,6 +10,8 @@ import IdeaDetail from "./components/ideaList/IdeaDetail";
 import Login from "./components/account/Login";
 import { Provider } from "react-redux";
 import store from "./store";
+import SignUp from "./components/account/SignUp";
+import Activate from "./components/account/Activate";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="idea-list" element={<IdeaList />} />
           <Route path="idea-detail/:ideaId" element={<IdeaDetail />} />
           <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="/activate/:uid/:token" element={<Activate />} />
         </Routes>
 
         <Footer />
