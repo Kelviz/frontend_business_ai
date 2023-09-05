@@ -9,12 +9,10 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
   const logout_user = () => {
     logout();
-    setRedirect(true);
+    
   };
 
-  if (redirect) {
-    return <Navigate to="/" />;
-  }
+  
 
   const guestLinks = () => {
     return (
@@ -35,8 +33,8 @@ const Navbar = ({ logout, isAuthenticated }) => {
         <li className="navbar-menu__item login">
           <Link to="/idea-list">History</Link>
         </li>
-        <li className="navbar-menu__item signup">
-          <Link href="#!" onClick={logout_user}>
+        <li className="navbar-menu__item logout">
+          <Link to="/" onClick={logout_user}>
             Logout
           </Link>
         </li>
@@ -59,6 +57,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
           {isAuthenticated ? authLinks() : guestLinks()}
         </div>
       </nav>
+{redirect ? <Navigate to='/' /> : <nav></nav>}
     </>
   );
 };

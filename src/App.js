@@ -1,4 +1,7 @@
 import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useDispatch, Provider, connect} from 'react-redux';
+import { checkAuthenticated, load_user } from './actions/Auth';
 
 import "./App.css";
 import MultiStepForm from "./components/form/MultiStepForm";
@@ -8,12 +11,13 @@ import Footer from "./components/footer/Footer";
 import IdeaList from "./components/ideaList/IdeaList";
 import IdeaDetail from "./components/ideaList/IdeaDetail";
 import Login from "./components/account/Login";
-import { Provider } from "react-redux";
 import store from "./store";
 import SignUp from "./components/account/SignUp";
 import Activate from "./components/account/Activate";
 
 function App() {
+
+  
   return (
     <>
       <Provider store={store}>

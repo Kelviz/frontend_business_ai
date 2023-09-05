@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+import {link, Navigate} from "react-router-dom";
+import {connect} from "react-redux";
 
 import IdeaCard from "./IdeaCard";
 import "./form.css";
@@ -8,12 +10,14 @@ import industry from "../../images/industry.png";
 import audience from "../../images/audience.png";
 import budget from "../../images/budget.png";
 
-const MultiStepForm = () => {
+const MultiStepForm = ({isAuthenticated}) => {
   const [formData, setFormData] = useState({
     industry: "",
     audience: "",
     budget: "",
   });
+  
+  
 
   const [currentStep, setCurrentStep] = useState(1);
   const [businessIdea, setBusinessIdea] = useState("");
@@ -22,7 +26,12 @@ const MultiStepForm = () => {
   const [audienceError, setAudienceError] = useState(null);
   const [budgetError, setBudgetError] = useState(null);
   const [isEmptyFields, setIsEmptyFields] = useState(false);
-
+  
+  if(!isAuthenticated){
+    return <Navigate to="/login" />
+  } 
+  
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -209,4 +218,8 @@ const MultiStepForm = () => {
   );
 };
 
-export default MultiStepForm;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps)(MultiStepForm);

@@ -58,6 +58,10 @@ nav {
   background-color: var(--purple-color);
 }
 
+.logout{
+  background-color: var(--purple-color);
+}
+
 .signup:hover {
   opacity: 0.7;
 }
