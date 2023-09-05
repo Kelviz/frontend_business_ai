@@ -25,7 +25,7 @@ function App() {
           <Route path="idea-detail/:ideaId" element={<IdeaDetail />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
-          <Route path="/activate/:uid/:token" element={<Activate />} />
+          <Route path="activate/:uid/:token" element={<Activate />} />
         </Routes>
 
         <Footer />

@@ -1,9 +1,49 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useState } from "react";
+import { logout } from "../../actions/Auth";
+import { Link, Navigate } from "react-router-dom";
+import { connect } from "react-redux";
 import "./navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ logout, isAuthenticated }) => {
+  const [redirect, setRedirect] = useState(false);
+
+  const logout_user = () => {
+    logout();
+    setRedirect(true);
+  };
+
+  if (redirect) {
+    return <Navigate to="/" />;
+  }
+
+  const guestLinks = () => {
+    return (
+      <ul className="navbar-menu__signup">
+        <li className="navbar-menu__item login">
+          <Link to="/login">Log In</Link>
+        </li>
+        <li className="navbar-menu__item signup">
+          <Link to="/signup">Get started free</Link>
+        </li>
+      </ul>
+    );
+  };
+
+  const authLinks = () => {
+    return (
+      <ul className="navbar-menu__signup">
+        <li className="navbar-menu__item login">
+          <Link to="/idea-list">History</Link>
+        </li>
+        <li className="navbar-menu__item signup">
+          <Link href="#!" onClick={logout_user}>
+            Logout
+          </Link>
+        </li>
+      </ul>
+    );
+  };
+
   return (
     <>
       <nav>
@@ -16,18 +56,15 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-menu">
-          <ul className="navbar-menu__signup">
-            <li className="navbar-menu__item login">
-              <a href="#">Log In</a>
-            </li>
-            <li className="navbar-menu__item signup">
-              <a href="#">Get started free</a>
-            </li>
-          </ul>
+          {isAuthenticated ? authLinks() : guestLinks()}
         </div>
       </nav>
     </>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);
