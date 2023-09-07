@@ -6,10 +6,11 @@ import "./about.css";
 
 const About = () => {
   const [about, setAbout] = useState([]);
+  const URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchAbout = async () => {
-      const response = await axios.get("http://127.0.0.1:8000/api/about/");
+      const response = await axios.get(`${URL}/api/about/`);
       setAbout(response.data);
       console.log(response.data);
     };
@@ -22,7 +23,6 @@ const About = () => {
       <h1>Unlock Your Entrepreneurial Journey</h1>
       <div className="about-works lineUp">
         {about.map((item) => (
-        
           <motion.div
             whileInView={{ opacity: 1 }}
             whileHover={{ scale: 1.1 }}

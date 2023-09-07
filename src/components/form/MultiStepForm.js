@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import {link, Navigate} from "react-router-dom";
-import {connect} from "react-redux";
+import { link, Navigate } from "react-router-dom";
+import { connect } from "react-redux";
 
 import IdeaCard from "./IdeaCard";
 import "./form.css";
@@ -10,14 +10,13 @@ import industry from "../../images/industry.png";
 import audience from "../../images/audience.png";
 import budget from "../../images/budget.png";
 
-const MultiStepForm = ({isAuthenticated}) => {
+const MultiStepForm = ({ isAuthenticated }) => {
+  const URL = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
     industry: "",
     audience: "",
     budget: "",
   });
-  
-  
 
   const [currentStep, setCurrentStep] = useState(1);
   const [businessIdea, setBusinessIdea] = useState("");
@@ -26,12 +25,11 @@ const MultiStepForm = ({isAuthenticated}) => {
   const [audienceError, setAudienceError] = useState(null);
   const [budgetError, setBudgetError] = useState(null);
   const [isEmptyFields, setIsEmptyFields] = useState(false);
-  
-  if(!isAuthenticated){
-    return <Navigate to="/login" />
-  } 
-  
-  
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -50,9 +48,16 @@ const MultiStepForm = ({isAuthenticated}) => {
     }
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/generate-ideas/",
-        formData
+        `${URL}/api/generate-ideas/`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `JWT ${localStorage.getItem("access")}`,
+          },
+        }
       );
+
       setBusinessIdea(response.data);
       console.log(businessIdea);
     } catch (error) {
@@ -219,7 +224,7 @@ const MultiStepForm = ({isAuthenticated}) => {
 };
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated
-})
+  isAuthenticated: state.auth.isAuthenticated,
+});
 
 export default connect(mapStateToProps)(MultiStepForm);

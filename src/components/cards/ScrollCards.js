@@ -11,10 +11,11 @@ import LeftArrowIcon from "../../images/left-arrow.png";
 
 const ScrollCards = () => {
   const [cards, setCards] = useState([]);
+  const URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchCards = async () => {
-      const response = await axios.get("http://127.0.0.1:8000/api/cards/");
+      const response = await axios.get(`${URL}/api/cards/`);
       setCards(response.data);
     };
 

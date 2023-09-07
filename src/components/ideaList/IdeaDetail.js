@@ -5,13 +5,16 @@ import { useParams } from "react-router-dom";
 import rightarrow from "../../images/left-arrow.png";
 
 const IdeaDetail = () => {
+  const URL = process.env.REACT_APP_API_URL;
   const [idea, setIdea] = useState("");
   const { ideaId } = useParams();
 
   const fetchIdea = async () => {
-    const response = await axios.get(
-      `http://127.0.0.1:8000/api/ideas/${ideaId}/`
-    );
+    const response = await axios.get(`${URL}/api/ideas/${ideaId}/`, {
+      headers: {
+        Authorization: `JWT ${localStorage.getItem("access")}`,
+      },
+    });
     setIdea(response.data);
   };
 

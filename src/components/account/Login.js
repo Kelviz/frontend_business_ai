@@ -46,6 +46,9 @@ const Login = ({ login, isAuthenticated }) => {
 
         <button type="submit">login</button>
       </form>
+      <div>
+        <Link to="/reset-password">Forgot Your Password?</Link>
+      </div>
     </div>
   );
 };
