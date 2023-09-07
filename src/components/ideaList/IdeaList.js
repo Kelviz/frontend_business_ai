@@ -5,11 +5,12 @@ import { Link } from "react-router-dom";
 import "./ideaList.css";
 
 const IdeaList = () => {
+  const URL = process.env.REACT_APP_API_URL;
   const [ideas, setIdeas] = useState([]);
 
   useEffect(() => {
     const fetchIdeas = async () => {
-      const response = await axios.get("http://127.0.0.1:8000/api/ideas/", {
+      const response = await axios.get(`${URL}/api/ideas/`, {
         headers: {
           Authorization: `JWT ${localStorage.getItem("access")}`,
         },
