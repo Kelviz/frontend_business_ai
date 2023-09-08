@@ -19,6 +19,7 @@ const Activate = ({ verify}) => {
 
   return (
     <div className="registration-form">
+    <p>Click the button below to verify your account</p>
       <button onClick={verify_account} type="button">
         verify
       </button>

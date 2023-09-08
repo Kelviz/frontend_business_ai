@@ -26,8 +26,10 @@ const Login = ({ login, isAuthenticated }) => {
   return (
     <div className="registration-form">
       <h2>Sign In</h2>
-      <p>Sign into your account</p>
       <form className="login-form" onSubmit={(e) => onSubmit(e)}>
+      
+      <div className="form-input-item">
+  
         <input
           type="email"
           name="email"
@@ -35,7 +37,9 @@ const Login = ({ login, isAuthenticated }) => {
           value={email}
           onChange={(e) => onChange(e)}
         />
-
+        </div>
+   <div className="form-input-item">
+       
         <input
           type="password"
           name="password"
@@ -43,12 +47,20 @@ const Login = ({ login, isAuthenticated }) => {
           value={password}
           onChange={(e) => onChange(e)}
         />
-
+   </div>
+   
         <button type="submit">login</button>
-      </form>
-      <div>
-        <Link to="/reset-password">Forgot Your Password?</Link>
+        
+   <div className="form-link">
+        <Link className="form-link-txt" to="/reset-password">Forgot Password?</Link>
+        
+            <Link className="form-link-txt" to="/signup">Create an account</Link>
       </div>
+        
+        
+        
+      </form>
+   
     </div>
   );
 };

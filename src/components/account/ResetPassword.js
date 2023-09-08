@@ -26,9 +26,10 @@ const ResetPassword = ({ reset_password }) => {
   }
 
   return (
-    <div>
+    <div className="registration-form">
       <h2>Request Password Reset:</h2>
-      <form onSubmit={(e) => onSubmit(e)}>
+      <form className="login-form" onSubmit={(e) => onSubmit(e)}>
+  <div className="form-input-item">
         <input
           name="email"
           type="emial"
@@ -37,6 +38,7 @@ const ResetPassword = ({ reset_password }) => {
           required
           onChange={(e) => onChange(e)}
         />
+  </div>
 
         <button type="submit">Reset Password</button>
       </form>

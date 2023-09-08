@@ -3,9 +3,14 @@
   height: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   color: #fff;
+  padding: 2rem;
+}
+
+.registration-form p{
+  margin-top: 1rem;
 }
 
 .login-form {
@@ -14,10 +19,73 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: #fff;
+  border: 1px solid #202020;
   color: #000;
+  margin-top: 2rem;
+  border-radius: 8px;
+  
+}
+
+.form-input-item{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #fff;
+  margin-top: 1.5rem;
 }
 
 .login-form input {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.form-link-txt{
+  text-decoration: none;
+  margin-top: 1rem;
+  color: blue;
+}
+
+.form-link{
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  
+}
+@media screen and (max-width: 680px) {
+  
+.login-form{
+  width: 90%;
+  padding: 0.5rem;
+}
+
+.login-form input {
+  margin-top: 0.3rem;
+  width: 100%;
+}
+
+
+.login-form button{
+  width: 100%;
   padding: 8px;
+  text-align: center;
+  background: green;
+  border: 1px solid green;
+  margin-top: 1rem;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.registration-form button{
+  width: 100%;
+  padding: 8px;
+  text-align: center;
+  background: green;
+  border: 1px solid green;
+  margin-top: 1rem;
+  color: #fff;
+  border-radius: 5px;
+}
+  
+  
 }

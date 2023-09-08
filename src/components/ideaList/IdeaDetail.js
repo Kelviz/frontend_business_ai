@@ -21,16 +21,26 @@ const IdeaDetail = () => {
   useEffect(() => {
     fetchIdea();
   }, [ideaId]);
+  
+const txt = idea && idea.idea ? idea.idea.split(/\d+\.\s/).filter(Boolean) : [];
+
 
   return (
     <div className="idea-detail">
       <div className="idea-detail__card">
-        <Link to="/idea-list">
+        <Link to="/idea-list" className="back-link">
           <img src={rightarrow} alt="arrow-right" />
         </Link>
         <span className="idea-detail__head-text">{idea.industry}</span>
         <span className="idea-detail__head-text">{idea.audience}</span>
-        <p>{idea.idea}</p>;
+          {txt.map((word, index) => (
+            <p key={index} className="s-txt">
+           {`${index + 1}. ${word}`}{" "}
+            </p>
+          ))}
+        
+      
+
       </div>
     </div>
   );

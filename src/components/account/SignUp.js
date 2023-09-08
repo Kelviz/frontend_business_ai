@@ -38,8 +38,11 @@ const SignUp = ({ signup, isAuthenticated }) => {
   return (
     <div className="registration-form">
       <h2>Sign Up</h2>
-      <p>Creat your account</p>
       <form className="login-form" onSubmit={(e) => onSubmit(e)}>
+      
+   
+      <div className="form-input-item">
+      
         <input
           type="text"
           name="first_name"
@@ -48,7 +51,11 @@ const SignUp = ({ signup, isAuthenticated }) => {
           onChange={(e) => onChange(e)}
           required
         />
+        </div>
 
+   
+      <div className="form-input-item">
+  
         <input
           type="text"
           name="last_name"
@@ -57,6 +64,11 @@ const SignUp = ({ signup, isAuthenticated }) => {
           onChange={(e) => onChange(e)}
           required
         />
+      </div>
+      
+   
+      <div className="form-input-item">
+  
         <input
           type="email"
           name="email"
@@ -65,7 +77,11 @@ const SignUp = ({ signup, isAuthenticated }) => {
           onChange={(e) => onChange(e)}
           required
         />
+        </div>
 
+   
+      <div className="form-input-item">
+  
         <input
           type="password"
           name="password"
@@ -74,6 +90,11 @@ const SignUp = ({ signup, isAuthenticated }) => {
           onChange={(e) => onChange(e)}
           required
         />
+        </div>
+        
+   
+      <div className="form-input-item">
+  
 
         <input
           type="password"
@@ -83,6 +104,8 @@ const SignUp = ({ signup, isAuthenticated }) => {
           onChange={(e) => onChange(e)}
           required
         />
+        
+        </div>
 
         <button type="submit">Register</button>
       </form>
