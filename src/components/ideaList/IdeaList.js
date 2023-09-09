@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import "./ideaList.css";
 
-const IdeaList = () => {
+const IdeaList = ({ isAuthenticated, userId }) => {
   const URL = process.env.REACT_APP_API_URL;
   const [ideas, setIdeas] = useState([]);
 
   useEffect(() => {
     const fetchIdeas = async () => {
+      const headers = isAuthenticated
+        ? {
+            Authorization: `JWT ${localStorage.getItem("access")}`,
+            "X-User-ID": userId, // Include user ID in headers
+          }
+        : {};
+
       const response = await axios.get(`${URL}/api/ideas/`, {
-        headers: {
-          Authorization: `JWT ${localStorage.getItem("access")}`,
-        },
+        headers: headers,
       });
 
       setIdeas(response.data);
@@ -62,4 +68,9 @@ const IdeaList = () => {
   );
 };
 
-export default IdeaList;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  userId: state.auth.user.id,
+});
+
+export default connect(mapStateToProps)(IdeaList);

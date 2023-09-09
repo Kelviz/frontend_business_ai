@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { link, Navigate } from "react-router-dom";
-import { connect } from "react-redux";
+import { Link, Navigate } from "react-router-dom";
+import { useSelector, useDispatch, connect } from "react-redux";
 
+import { load_user } from "../../actions/Auth";
 import IdeaCard from "./IdeaCard";
 import "./form.css";
 import industry from "../../images/industry.png";
@@ -11,6 +12,9 @@ import audience from "../../images/audience.png";
 import budget from "../../images/budget.png";
 
 const MultiStepForm = ({ isAuthenticated }) => {
+  const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
+
   const URL = process.env.REACT_APP_API_URL;
   const [formData, setFormData] = useState({
     industry: "",
@@ -42,14 +46,20 @@ const MultiStepForm = ({ isAuthenticated }) => {
       formData.audience.trim() === "" ||
       formData.budget.trim() === ""
     ) {
-      // Show an error message or take appropriate action here
-
-      return; // Prevent form submission
+      return;
     }
+
     try {
+      if (!user) {
+        await dispatch(load_user());
+      }
+
+      const userId = user ? user.id : null;
+
       const response = await axios.post(
         `${URL}/api/generate-ideas/`,
         formData,
+        userId,
         {
           headers: {
             "Content-Type": "application/json",
@@ -227,4 +237,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps)(MultiStepForm);
+export default connect(mapStateToProps, { load_user })(MultiStepForm);
