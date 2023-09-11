@@ -96,3 +96,27 @@
     border-radius: 5px;
   }
 }
+
+.msg-noti {
+  margin-top: 3rem;
+  padding: 1rem;
+  width: 60%;
+  background: #fff;
+  color: rgb(45, 170, 45);
+  border-radius: 10px;
+  text-align: left;
+}
+
+.error-message {
+  background: #fff;
+  color: red;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 7px;
+}
+
+.input-error {
+  font-size: 14px;
+  color: red;
+  padding: 5px;
+}

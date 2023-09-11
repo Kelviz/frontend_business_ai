@@ -51,15 +51,18 @@ const MultiStepForm = ({ isAuthenticated }) => {
 
     try {
       if (!user) {
-        await dispatch(load_user());
+        dispatch(load_user());
       }
 
+      console.log(localStorage.getItem("access"));
+
       const userId = user ? user.id : null;
+
+      formData.userId = userId;
 
       const response = await axios.post(
         `${URL}/api/generate-ideas/`,
         formData,
-        userId,
         {
           headers: {
             "Content-Type": "application/json",

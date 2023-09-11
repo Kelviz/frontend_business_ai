@@ -21,27 +21,32 @@ const ResetPassword = ({ reset_password }) => {
     setRequestSent(true);
   };
 
-  if (requestSent) {
-    return <Navigate to="/" />;
-  }
-
   return (
     <div className="registration-form">
-      <h2>Request Password Reset:</h2>
-      <form className="login-form" onSubmit={(e) => onSubmit(e)}>
-  <div className="form-input-item">
-        <input
-          name="email"
-          type="emial"
-          value={email}
-          placeholder="Enter email"
-          required
-          onChange={(e) => onChange(e)}
-        />
-  </div>
+      <h3>Request Password Reset:</h3>
+      {requestSent ? (
+        <div className="msg-noti">
+          <p>
+            Password reset request sent. Check your email for further
+            instructions.
+          </p>
+        </div>
+      ) : (
+        <form className="login-form" onSubmit={(e) => onSubmit(e)}>
+          <div className="form-input-item">
+            <input
+              name="email"
+              type="emial"
+              value={email}
+              placeholder="Enter email"
+              required
+              onChange={(e) => onChange(e)}
+            />
+          </div>
 
-        <button type="submit">Reset Password</button>
-      </form>
+          <button type="submit">Reset Password</button>
+        </form>
+      )}
     </div>
   );
 };

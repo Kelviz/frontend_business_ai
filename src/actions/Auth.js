@@ -1,4 +1,5 @@
 import axios from "axios";
+import { persistor } from "../store";
 import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
@@ -19,6 +20,9 @@ import {
   FACEBOOK_AUTH_SUCCESS,
   FACEBOOK_AUTH_FAIL,
   LOGOUT,
+  RESET_SIGNUP_ERROR,
+  RESET_SIGNIN_ERROR,
+  CLEAR_USER_DATA,
 } from "./types";
 
 export const load_user = () => async (dispatch) => {
@@ -115,9 +119,16 @@ export const login = (email, password) => async (dispatch) => {
 
     dispatch(load_user());
   } catch (err) {
-    dispatch({
-      type: LOGIN_FAIL,
-    });
+    if (err.response && err.response.status === 401) {
+      const errorMessage = err.response.data.detail
+        ? err.response.data.detail
+        : "An error occurred during signing in.";
+
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: errorMessage,
+      });
+    }
   }
 };
 
@@ -148,10 +159,19 @@ export const signup =
         type: SIGNUP_SUCCESS,
         payload: res.data,
       });
+      return { success: true };
     } catch (err) {
-      dispatch({
-        type: SIGNUP_FAIL,
-      });
+      if (err.response && err.response.status === 400) {
+        const errorMessage = err.response.data.email
+          ? err.response.data.email[0]
+          : "An error occurred during registration.";
+
+        dispatch({
+          type: SIGNUP_FAIL,
+          payload: errorMessage,
+        });
+      }
+      return { success: false };
     }
   };
 
@@ -236,4 +256,23 @@ export const logout = () => (dispatch) => {
   dispatch({
     type: LOGOUT,
   });
+
+  persistor.purge();
+};
+
+export const resetSignupError = () => {
+  return {
+    type: RESET_SIGNUP_ERROR,
+  };
+};
+
+export const resetSigninError = () => {
+  return {
+    type: RESET_SIGNIN_ERROR,
+  };
+};
+
+export const clearUserData = () => (dispatch) => {
+  // Clear Redux state
+  dispatch({ type: CLEAR_USER_DATA });
 };

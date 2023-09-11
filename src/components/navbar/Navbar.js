@@ -9,10 +9,8 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
   const logout_user = () => {
     logout();
-    
+    return <Navigate to="home" />;
   };
-
-  
 
   const guestLinks = () => {
     return (
@@ -57,7 +55,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
           {isAuthenticated ? authLinks() : guestLinks()}
         </div>
       </nav>
-{redirect ? <Navigate to='/' /> : <nav></nav>}
+      {redirect ? <Navigate to="/" /> : <nav></nav>}
     </>
   );
 };

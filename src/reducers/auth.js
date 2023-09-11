@@ -18,12 +18,17 @@ import {
   FACEBOOK_AUTH_SUCCESS,
   FACEBOOK_AUTH_FAIL,
   LOGOUT,
+  RESET_SIGNUP_ERROR,
+  RESET_SIGNIN_ERROR,
+  CLEAR_USER_DATA,
 } from "../actions/types";
 
 const initialState = {
   access: localStorage.getItem("access"),
   refresh: localStorage.getItem("refresh"),
   isAuthenticated: null,
+  signupError: null,
+  signinError: null,
   user: null,
 };
 
@@ -69,8 +74,6 @@ export default function (state = initialState, action) {
       };
     case GOOGLE_AUTH_FAIL:
     case FACEBOOK_AUTH_FAIL:
-    case LOGIN_FAIL:
-    case SIGNUP_FAIL:
     case LOGOUT:
       localStorage.removeItem("access");
       localStorage.removeItem("refresh");
@@ -81,6 +84,43 @@ export default function (state = initialState, action) {
         isAuthenticated: false,
         user: null,
       };
+
+    case SIGNUP_FAIL:
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
+      return {
+        ...state,
+        access: null,
+        refresh: null,
+        isAuthenticated: false,
+        user: null,
+        signupError: payload,
+      };
+
+    case LOGIN_FAIL:
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
+      return {
+        ...state,
+        access: null,
+        refresh: null,
+        isAuthenticated: false,
+        user: null,
+        signinError: payload,
+      };
+
+    case RESET_SIGNUP_ERROR:
+      return {
+        ...state,
+        signupError: null,
+      };
+
+    case RESET_SIGNIN_ERROR:
+      return {
+        ...state,
+        signinError: null,
+      };
+
     case PASSWORD_RESET_SUCCESS:
     case PASSWORD_RESET_FAIL:
     case PASSWORD_RESET_CONFIRM_SUCCESS:
