@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
+
+import LoginLoading from "./LoginLoading";
 import { signup, resetSignupError } from "../../actions/Auth";
 
 const SignUp = ({ signup, isAuthenticated, signupError, resetSignupError }) => {
@@ -129,7 +131,9 @@ const SignUp = ({ signup, isAuthenticated, signupError, resetSignupError }) => {
           <button type="submit">
             {" "}
             {loading ? (
-              <span>Creating Account...</span>
+              <span>
+                <LoginLoading />
+              </span>
             ) : (
               <span>Create Account</span>
             )}

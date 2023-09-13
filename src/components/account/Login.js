@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
+import { FaCircle } from "react-icons/fa";
+
+import LoginLoading from "./LoginLoading";
 import { login, resetSigninError } from "../../actions/Auth";
 import "./account.css";
 
@@ -56,7 +59,13 @@ const Login = ({ login, isAuthenticated, signinError, resetSigninError }) => {
         </div>
 
         <button type="submit">
-          {loading ? <span>Signing in...</span> : <span>Sign in</span>}
+          {loading ? (
+            <span>
+              <LoginLoading />
+            </span>
+          ) : (
+            <span>Sign In</span>
+          )}
         </button>
 
         <div className="form-link">

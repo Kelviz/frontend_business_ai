@@ -19,7 +19,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
           <Link to="/login">Log In</Link>
         </li>
         <li className="navbar-menu__item signup">
-          <Link to="/signup">Get started free</Link>
+          <Link to="/signup">Get started</Link>
         </li>
       </ul>
     );
@@ -55,7 +55,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
           {isAuthenticated ? authLinks() : guestLinks()}
         </div>
       </nav>
-      {redirect ? <Navigate to="/" /> : <nav></nav>}
+      {redirect ? <Navigate to="/" /> : <div></div>}
     </>
   );
 };

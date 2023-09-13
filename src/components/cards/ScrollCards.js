@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
-import "react-horizontal-scrolling-menu/dist/styles.css";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 import axios from "axios";
 
@@ -40,7 +39,7 @@ const ScrollCards = () => {
     <div className="scroll-main">
       <h1>AI Generated Business Idea Samples</h1>
       <button className="button-left" onClick={handleLeftArrowClick}>
-        <img src={LeftArrowIcon} alt="left-arrow" />
+        <HiChevronLeft />
       </button>
       <div className="horizontal-scrolling-container" ref={containerRef}>
         {cards.map((item) => (
@@ -55,7 +54,7 @@ const ScrollCards = () => {
         ))}
       </div>
       <button className="button-right" onClick={handleRightArrowClick}>
-        <img src={RightArrowIcon} alt="left-arrow" />
+        <HiChevronRight />
       </button>
     </div>
   );

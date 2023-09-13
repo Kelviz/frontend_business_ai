@@ -22,22 +22,22 @@ function App() {
   return (
     <>
       <Provider store={store}>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/form" element={<MultiStepForm />} />
-            <Route path="/idea-list" element={<IdeaList />} />
-            <Route path="/idea-detail/:ideaId" element={<IdeaDetail />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="signup" element={<SignUp />} />
-            <Route path="/activate/:uid/:token" element={<Activate />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
-            <Route
-              path="/password/reset/confirm/:uid/:token"
-              element={<ResetPasswordConfirm />}
-            />
-          </Routes>
-        </Layout>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/form" element={<MultiStepForm />} />
+          <Route path="/idea-list" element={<IdeaList />} />
+          <Route path="/idea-detail/:ideaId" element={<IdeaDetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="/activate/:uid/:token" element={<Activate />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route
+            path="/password/reset/confirm/:uid/:token"
+            element={<ResetPasswordConfirm />}
+          />
+        </Routes>
+        <Footer />
       </Provider>
     </>
   );

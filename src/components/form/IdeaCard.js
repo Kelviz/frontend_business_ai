@@ -30,11 +30,8 @@ const IdeaCard = ({ businessIdea }) => {
 
       {businessIdea && (
         <div className="ideacard-links">
-          <Link className="ideacard-link" to="/form">
-            Back
-          </Link>
           <Link className="ideacard-link" to="/idea-list">
-            Show List
+            Your Business Ideas
           </Link>
         </div>
       )}

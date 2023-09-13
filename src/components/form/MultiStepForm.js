@@ -10,6 +10,7 @@ import "./form.css";
 import industry from "../../images/industry.png";
 import audience from "../../images/audience.png";
 import budget from "../../images/budget.png";
+import api from "../../axiosInstance";
 
 const MultiStepForm = ({ isAuthenticated }) => {
   const user = useSelector((state) => state.auth.user);
@@ -29,6 +30,7 @@ const MultiStepForm = ({ isAuthenticated }) => {
   const [audienceError, setAudienceError] = useState(null);
   const [budgetError, setBudgetError] = useState(null);
   const [isEmptyFields, setIsEmptyFields] = useState(false);
+  const [motionDirection, setMotionDirection] = useState("right");
 
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
@@ -60,16 +62,12 @@ const MultiStepForm = ({ isAuthenticated }) => {
 
       formData.userId = userId;
 
-      const response = await axios.post(
-        `${URL}/api/generate-ideas/`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `JWT ${localStorage.getItem("access")}`,
-          },
-        }
-      );
+      const response = await api.post(`${URL}/api/generate-ideas/`, formData, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `JWT ${localStorage.getItem("access")}`,
+        },
+      });
 
       setBusinessIdea(response.data);
       console.log(businessIdea);
@@ -85,6 +83,38 @@ const MultiStepForm = ({ isAuthenticated }) => {
     setFormSubmitted(true);
   };
 
+  const handlePrevClick = () => {
+    setCurrentStep(currentStep - 1);
+    setMotionDirection("right"); // Set the motion direction to "right" for previous animation
+  };
+
+  const handleNextClick = () => {
+    if (currentStep === 1) {
+      if (formData.industry.trim() === "") {
+        setIndustryError("Industry is required");
+      } else {
+        setIndustryError("");
+        setCurrentStep(currentStep + 1);
+        setMotionDirection("left"); // Set the motion direction to "left" for next animation
+      }
+    } else if (currentStep === 2) {
+      if (formData.audience.trim() === "") {
+        setAudienceError("Audience is required");
+      } else {
+        setAudienceError("");
+        setCurrentStep(currentStep + 1);
+        setMotionDirection("left"); // Set the motion direction to "left" for next animation
+      }
+    } else if (currentStep === 3) {
+      if (formData.budget.trim() === "") {
+        setBudgetError("Budget is required");
+      } else {
+        setBudgetError("");
+        handleSubmit();
+      }
+    }
+  };
+
   return (
     <div className="form-data">
       {formSubmitted ? (
@@ -96,7 +126,7 @@ const MultiStepForm = ({ isAuthenticated }) => {
           )}
           {currentStep === 1 && (
             <motion.div
-              initial={currentStep > 1 ? { x: -500 } : { x: 500 }}
+              initial={motionDirection === "right" ? { x: 500 } : { x: -500 }}
               animate={{ x: 0 }}
               transition={{ duration: 0.5, type: "tween" }}
               className="form-data__item"
@@ -128,7 +158,7 @@ const MultiStepForm = ({ isAuthenticated }) => {
 
           {currentStep === 2 && (
             <motion.div
-              initial={currentStep > 1 ? { x: -500 } : { x: 500 }}
+              initial={motionDirection === "right" ? { x: 500 } : { x: -500 }}
               animate={{ x: 0 }}
               transition={{ duration: 0.5, type: "tween" }}
               className="form-data__item"
@@ -157,7 +187,7 @@ const MultiStepForm = ({ isAuthenticated }) => {
 
           {currentStep === 3 && (
             <motion.div
-              initial={currentStep > 1 ? { x: -500 } : { x: 500 }}
+              initial={motionDirection === "right" ? { x: 500 } : { x: -500 }}
               animate={{ x: 0 }}
               transition={{ duration: 0.5, type: "tween" }}
               className="form-data__item"
@@ -190,7 +220,7 @@ const MultiStepForm = ({ isAuthenticated }) => {
                   type="button"
                   className="prev"
                   rel="prev"
-                  onClick={() => setCurrentStep(currentStep - 1)}
+                  onClick={handlePrevClick}
                 >
                   &lt; Previous
                 </button>
@@ -200,31 +230,7 @@ const MultiStepForm = ({ isAuthenticated }) => {
                 type="button"
                 className="next"
                 rel="next"
-                onClick={() => {
-                  if (currentStep === 1) {
-                    if (formData.industry.trim() === "") {
-                      setIndustryError("Industry is required");
-                    } else {
-                      setIndustryError("");
-                      setCurrentStep(currentStep + 1);
-                    }
-                  } else if (currentStep === 2) {
-                    if (formData.audience.trim() === "") {
-                      setAudienceError("Audience is required");
-                    } else {
-                      setAudienceError("");
-                      setCurrentStep(currentStep + 1);
-                    }
-                  } else if (currentStep === 3) {
-                    if (formData.budget.trim() === "") {
-                      setBudgetError("Budget is required");
-                    } else {
-                      setBudgetError("");
-
-                      handleSubmit();
-                    }
-                  }
-                }}
+                onClick={handleNextClick}
               >
                 Next &gt;
               </button>

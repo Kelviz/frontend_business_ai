@@ -24,14 +24,16 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const timer = setInterval(typeWriterEffect, 200);
+    const timer = setInterval(typeWriterEffect, 100);
     return () => clearInterval(timer);
   }, [currentText, textIndex]);
 
   return (
     <div className="header">
       <div className="motion-txt">
-        <h1>{currentText}</h1>
+        <div className="moving-text">
+          <h1>{currentText}</h1>
+        </div>
         <h2 className="txt-blue">#BusinessIdeas</h2>
         <p>
           Unlock the Power of Innovation: Enter your industry, define your
@@ -57,54 +59,6 @@ const Header = () => {
               Get started free
             </Link>
           </button>
-        </div>
-      </div>
-      <div className="wrapper">
-        <div className="header-info"></div>
-        <div className="container-dot">
-          <span className="dot"></span>
-        </div>
-        <div className="container-dot">
-          <span className="dot"></span>
-        </div>
-        <div className="container-dot">
-          <span className="dot"></span>
-        </div>
-        <div className="container-dot">
-          <span className="dot"></span>
-        </div>
-        <div className="container-dot">
-          <span className="dot"></span>
-        </div>
-        <div>
-          <span className="dot"></span>
-        </div>
-        <div>
-          <span className="dot"></span>
-        </div>
-        <div>
-          <span className="dot"></span>
-        </div>
-        <div>
-          <span className="dot"></span>
-        </div>
-        <div>
-          <span className="dot"></span>
-        </div>
-        <div>
-          <span className="dot"></span>
-        </div>
-        <div>
-          <span className="dot"></span>
-        </div>
-        <div>
-          <span className="dot"></span>
-        </div>
-        <div>
-          <span className="dot"></span>
-        </div>
-        <div>
-          <span className="dot"></span>
         </div>
       </div>
     </div>

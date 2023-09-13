@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
+import api from "../../axiosInstance";
 
 import "./ideaList.css";
 
@@ -9,24 +10,32 @@ const IdeaList = ({ isAuthenticated, userId }) => {
   const URL = process.env.REACT_APP_API_URL;
   const [ideas, setIdeas] = useState([]);
 
+  const fetchIdeas = async () => {
+    const headers = isAuthenticated ? (
+      {
+        Authorization: `JWT ${localStorage.getItem("access")}`,
+        "X-User-ID": userId,
+      }
+    ) : (
+      <Navigate to="/login" />
+    );
+
+    const response = await api.get(`${URL}/api/ideas/`, {
+      headers: headers,
+    });
+
+    setIdeas(response.data);
+  };
+
   useEffect(() => {
-    const fetchIdeas = async () => {
-      const headers = isAuthenticated
-        ? {
-            Authorization: `JWT ${localStorage.getItem("access")}`,
-            "X-User-ID": userId, // Include user ID in headers
-          }
-        : {};
-
-      const response = await axios.get(`${URL}/api/ideas/`, {
-        headers: headers,
-      });
-
-      setIdeas(response.data);
-    };
-
-    fetchIdeas();
+    if (isAuthenticated) {
+      fetchIdeas();
+    }
   }, []);
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div className="idea-container">
@@ -70,7 +79,7 @@ const IdeaList = ({ isAuthenticated, userId }) => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
-  userId: state.auth.user.id,
+  userId: state.auth.user ? state.auth.user.id : null,
 });
 
 export default connect(mapStateToProps)(IdeaList);

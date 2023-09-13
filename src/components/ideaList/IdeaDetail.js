@@ -21,12 +21,12 @@ const IdeaDetail = ({ isAuthenticated }) => {
   };
 
   useEffect(() => {
-    if (isAuthenticated) {
-      fetchIdea();
-    } else {
-      return <Navigate to="/login" />;
-    }
+    fetchIdea();
   }, [ideaId]);
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
 
   const txt =
     idea && idea.idea ? idea.idea.split(/\d+\.\s/).filter(Boolean) : [];

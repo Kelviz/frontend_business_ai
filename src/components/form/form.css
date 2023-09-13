@@ -27,7 +27,7 @@
 }
 
 .form-data__img {
-  width: 500px;
+  width: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,14 +39,14 @@
 }
 
 .form-txt {
-  width: 500px;
+  width: 70%;
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
 }
 
 .form-data__item input {
-  width: 500px;
+  width: 70%;
   margin-top: 2rem;
   padding: 13px 5px;
   background-color: #383737;
@@ -75,8 +75,9 @@
 .prev,
 .next {
   /* only modern browser */
-  background-color: #000;
-  border: 1px solid #000;
+  background-color: inherit;
+  border: inherit;
+  cursor: pointer;
 }
 .prev:not(:nth-child(1n + 3)),
 .next:not(:nth-child(1n + 3)) {
@@ -223,37 +224,33 @@
   margin: 1.5rem 0;
 }
 
+@media screen and (max-width: 780px) {
+  .form-data form {
+    width: 100%;
+  }
 
-@media screen and (max-width: 680px) {
-.form-data form {
-  width: 100%;
-  
-}
+  .form-data {
+    padding: 1.5rem;
+  }
 
-.form-data{
-  padding: 1.5rem;
-}
+  .form-data__img {
+    width: 200px;
+    height: 200px;
+  }
+  .form-data__img img {
+    width: 100%;
+    height: 100%;
+  }
 
+  .form-txt {
+    width: 90%;
+  }
 
-.form-data__img{
-  width: 200px;
-  height: 200px;
-}
-.form-data__img img{
-  width: 100%;
-  height: 100%;
-}
+  .form-data__item input {
+    width: 90%;
+  }
 
-.form-txt{
-  width: 100%;
-}
-
-.form-data__item input{
-  width: 100%;
-}
-
-.ideacard-txt {
-  width: 100%;
-}
-  
+  .ideacard-txt {
+    width: 100%;
+  }
 }
