@@ -7,12 +7,11 @@
   align-items: center;
   color: #fff;
   padding: 2rem 3rem;
-  z-index: 3;
-  margin-top: 3rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .footer-company {
   margin-top: 5rem;
 }
-
-

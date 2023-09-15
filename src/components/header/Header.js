@@ -24,7 +24,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const timer = setInterval(typeWriterEffect, 100);
+    const timer = setInterval(typeWriterEffect, 200);
     return () => clearInterval(timer);
   }, [currentText, textIndex]);
 
@@ -53,12 +53,9 @@ const Header = () => {
           </div>
         </div>
         <div className="header-button">
-          <button>
-            <Link to="form" className="header-button__link">
-              {" "}
-              Get started free
-            </Link>
-          </button>
+          <Link to="form" className="header-button__link">
+            Get started free
+          </Link>
         </div>
       </div>
     </div>

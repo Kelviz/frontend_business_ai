@@ -21,6 +21,8 @@ import {
   RESET_SIGNUP_ERROR,
   RESET_SIGNIN_ERROR,
   CLEAR_USER_DATA,
+  REFRESH_TOKEN_SUCCESS,
+  REFRESH_TOKEN_FAILURE,
 } from "../actions/types";
 
 const initialState = {
@@ -119,6 +121,19 @@ export default function (state = initialState, action) {
       return {
         ...state,
         signinError: null,
+      };
+
+    case REFRESH_TOKEN_SUCCESS:
+      return {
+        ...state,
+        access: payload.access,
+      };
+
+    case REFRESH_TOKEN_FAILURE:
+      return {
+        ...state,
+        access: null,
+        refresh: null,
       };
 
     case PASSWORD_RESET_SUCCESS:

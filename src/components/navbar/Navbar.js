@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { logout } from "../../actions/Auth";
 import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
+import { MdFilterListAlt } from "react-icons/md";
+
 import "./navbar.css";
 
 const Navbar = ({ logout, isAuthenticated }) => {
@@ -28,8 +30,10 @@ const Navbar = ({ logout, isAuthenticated }) => {
   const authLinks = () => {
     return (
       <ul className="navbar-menu__signup">
-        <li className="navbar-menu__item login">
-          <Link to="/idea-list">History</Link>
+        <li className="navbar-menu__item history">
+          <Link to="/idea-list">
+            <MdFilterListAlt size={28} color="white" />
+          </Link>
         </li>
         <li className="navbar-menu__item logout">
           <Link to="/" onClick={logout_user}>

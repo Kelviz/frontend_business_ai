@@ -15,7 +15,7 @@ const Login = ({ login, isAuthenticated, signinError, resetSigninError }) => {
 
   useEffect(() => {
     if (signinError) {
-      setLoading(false); // Set loading to false when there's a signinError
+      setLoading(false);
     }
   }, [signinError]);
 
@@ -36,7 +36,7 @@ const Login = ({ login, isAuthenticated, signinError, resetSigninError }) => {
   }
 
   return (
-    <div className="registration-form">
+    <div className="registration-form ">
       <h2>Sign In</h2>
       <form className="login-form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-input-item">

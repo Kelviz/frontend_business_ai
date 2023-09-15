@@ -3,6 +3,8 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import { Connect, connect } from "react-redux";
 import { useParams } from "react-router-dom";
+import { LineWave } from "react-loader-spinner";
+
 import rightarrow from "../../images/left-arrow.png";
 import api from "../../axiosInstance";
 
@@ -11,28 +13,38 @@ const IdeaDetail = ({ isAuthenticated }) => {
   const [idea, setIdea] = useState("");
   const { ideaId } = useParams();
 
-  const fetchIdea = async () => {
-    const response = await api.get(`${URL}/api/detail/${ideaId}/`, {
-      headers: {
-        Authorization: `JWT ${localStorage.getItem("access")}`,
-      },
-    });
-    setIdea(response.data);
-  };
-
   useEffect(() => {
+    const fetchIdea = async () => {
+      const response = await api.get(`${URL}/api/detail/${ideaId}/`, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem("access")}`,
+        },
+      });
+      setIdea(response.data);
+    };
+
     fetchIdea();
-  }, [ideaId]);
+  }, [isAuthenticated, ideaId]);
 
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
+  }
+
+  if (!idea) {
+    return (
+      <div className="idea-container main-pd">
+        <div className="loader-spin">
+          <LineWave color="#fff" height={70} width={70} />
+        </div>
+      </div>
+    );
   }
 
   const txt =
     idea && idea.idea ? idea.idea.split(/\d+\.\s/).filter(Boolean) : [];
 
   return (
-    <div className="idea-detail">
+    <div className="idea-detail main-pd ">
       <div className="idea-detail__card">
         <Link to="/idea-list" className="back-link">
           <img src={rightarrow} alt="arrow-right" />

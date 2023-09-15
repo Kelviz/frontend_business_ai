@@ -1,3 +1,12 @@
+.scroll-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+}
+
 .scroll-main {
   width: 100%;
   position: relative;
@@ -5,11 +14,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 7rem;
-  padding-bottom: 5rem;
 }
 
-.scroll-main h1 {
+.scroll-container h1 {
   width: 100%;
   text-align: center;
   color: #fff;
@@ -48,8 +55,8 @@
 }
 
 .horizontal-scrolling-card {
-  width: 330px;
-  height: 330px;
+  width: 350px;
+  height: 350px;
   margin-right: 1rem;
   padding: 1rem;
   display: flex;
@@ -91,7 +98,7 @@
 }
 
 @media screen and (max-width: 680px) {
-  .scroll-main h1 {
+  .scroll-container h1 {
     font-size: 1.7rem;
     margin-bottom: 3rem;
   }

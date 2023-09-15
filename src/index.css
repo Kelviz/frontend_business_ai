@@ -27,6 +27,11 @@
   top: 0;
 }
 
+.main-pd {
+  width: 100%;
+  padding-bottom: 17rem;
+}
+
 .wrapper div {
   height: 60px;
   width: 60px;

@@ -57,7 +57,7 @@ const SignUp = ({ signup, isAuthenticated, signupError, resetSignupError }) => {
   }
 
   return (
-    <div className="registration-form">
+    <div className="registration-form main-pd">
       <h2>Sign Up</h2>
       {accountCreated ? (
         <div className="msg-noti">

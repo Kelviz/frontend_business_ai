@@ -23,6 +23,7 @@ function App() {
     <>
       <Provider store={store}>
         <Navbar />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/form" element={<MultiStepForm />} />
@@ -37,6 +38,7 @@ function App() {
             element={<ResetPasswordConfirm />}
           />
         </Routes>
+
         <Footer />
       </Provider>
     </>

@@ -7,7 +7,7 @@ import Loader from "../loader/Loader";
 const IdeaCard = ({ businessIdea }) => {
   const formatIdea = businessIdea ? businessIdea.ideas.split("\n\n") : [];
   return (
-    <div className="ideacard">
+    <div className="ideacard main-pd ">
       <div className="ideacard-img">
         <img src={ai_light} alt="ai light" />
       </div>

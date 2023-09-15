@@ -60,21 +60,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
-}
-
-.header-button button {
-  width: 20%;
-  padding: 0.8rem 1rem;
-  background: blueviolet;
-  border: 1px solid blueviolet;
-  color: white;
-  border-radius: 8px;
+  margin-top: 2rem;
 }
 
 .header-button__link {
   text-decoration: none;
   color: #fff;
+  width: auto;
+  padding: 0.8rem 1rem;
+  background: blueviolet;
+  border: 1px solid blueviolet;
+  color: white;
+  border-radius: 8px;
 }
 
 @media screen and (max-width: 980px) {

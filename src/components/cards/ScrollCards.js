@@ -1,21 +1,22 @@
 import React, { useRef, useState, useEffect } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { LineWave } from "react-loader-spinner";
 
 import axios from "axios";
 
 import IdeaCard from "./IdeaCard";
 import "./cards.css";
-import RightArrowIcon from "../../images/right-arrow.png";
-import LeftArrowIcon from "../../images/left-arrow.png";
 
 const ScrollCards = () => {
   const [cards, setCards] = useState([]);
   const URL = process.env.REACT_APP_API_URL;
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchCards = async () => {
       const response = await axios.get(`${URL}/api/cards/`);
       setCards(response.data);
+      setIsLoading(false);
     };
 
     fetchCards();
@@ -36,26 +37,34 @@ const ScrollCards = () => {
   };
 
   return (
-    <div className="scroll-main">
+    <div className="scroll-container">
       <h1>AI Generated Business Idea Samples</h1>
-      <button className="button-left" onClick={handleLeftArrowClick}>
-        <HiChevronLeft />
-      </button>
-      <div className="horizontal-scrolling-container" ref={containerRef}>
-        {cards.map((item) => (
-          <div
-            className="horizontal-scrolling-card"
-            key={item.id}
-            itemId={item.id}
-            title={item.id}
-          >
-            <IdeaCard item={item} />
+      {isLoading ? (
+        <div>
+          <LineWave color="#fff" height={200} width={200} />
+        </div>
+      ) : (
+        <div className="scroll-main">
+          <button className="button-left" onClick={handleLeftArrowClick}>
+            <HiChevronLeft />
+          </button>
+          <div className="horizontal-scrolling-container" ref={containerRef}>
+            {cards.map((item) => (
+              <div
+                className="horizontal-scrolling-card"
+                key={item.id}
+                itemId={item.id}
+                title={item.id}
+              >
+                <IdeaCard item={item} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <button className="button-right" onClick={handleRightArrowClick}>
-        <HiChevronRight />
-      </button>
+          <button className="button-right" onClick={handleRightArrowClick}>
+            <HiChevronRight />
+          </button>
+        </div>
+      )}
     </div>
   );
 };

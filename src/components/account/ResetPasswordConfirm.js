@@ -27,11 +27,11 @@ const ResetPasswordConfirm = ({ reset_password_confirm }) => {
   };
 
   if (requestSent) {
-    return <Navigate to="/" />;
+    return <Navigate to="/login" />;
   }
 
   return (
-    <div className="registration-form">
+    <div className="registration-form main-pd ">
       <h2>Reset Password Confirmation</h2>
       <form className="login-form" onSubmit={(e) => onSubmit(e)}>
         <input

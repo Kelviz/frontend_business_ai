@@ -23,6 +23,8 @@ import {
   RESET_SIGNUP_ERROR,
   RESET_SIGNIN_ERROR,
   CLEAR_USER_DATA,
+  REFRESH_TOKEN_SUCCESS,
+  REFRESH_TOKEN_FAILURE,
 } from "./types";
 
 export const load_user = () => async (dispatch) => {
@@ -256,8 +258,6 @@ export const logout = () => (dispatch) => {
   dispatch({
     type: LOGOUT,
   });
-
-  persistor.purge();
 };
 
 export const resetSignupError = () => {
@@ -275,4 +275,42 @@ export const resetSigninError = () => {
 export const clearUserData = () => (dispatch) => {
   // Clear Redux state
   dispatch({ type: CLEAR_USER_DATA });
+};
+
+export const refreshAccessToken = () => async (dispatch) => {
+  const refreshToken = localStorage.getItem("refresh");
+
+  if (!refreshToken) {
+    dispatch({
+      type: REFRESH_TOKEN_FAILURE,
+      payload: "Refresh token not found",
+    });
+    return;
+  }
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const body = JSON.stringify({ refresh: refreshToken });
+
+  try {
+    const res = await axios.post(
+      `${process.env.REACT_APP_API_URL}/auth/jwt/refresh/`,
+      body,
+      config
+    );
+
+    dispatch({
+      type: REFRESH_TOKEN_SUCCESS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: REFRESH_TOKEN_FAILURE,
+      payload: "Failed to refresh access token",
+    });
+  }
 };

@@ -22,7 +22,7 @@ const ResetPassword = ({ reset_password }) => {
   };
 
   return (
-    <div className="registration-form">
+    <div className="registration-form main-pd ">
       <h3>Request Password Reset:</h3>
       {requestSent ? (
         <div className="msg-noti">

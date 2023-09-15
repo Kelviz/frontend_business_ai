@@ -18,12 +18,16 @@
   padding: 3rem;
 }
 
+.idea-list h2 {
+  padding-left: 0.5rem;
+}
+
 .idea-item {
   width: 100%;
   text-align: left;
   padding: 1.2rem 0.5rem;
   margin-top: 1rem;
-  border: 1px solid rgba(27, 27, 27, 0.753);
+  border: 1px solid rgba(61, 61, 61, 0.753);
   border-radius: 3px;
 }
 
@@ -79,6 +83,7 @@
   align-items: center;
   color: #fff;
   padding: 2rem 0.5rem;
+  padding-bottom: 20rem;
 }
 
 .idea-detail__card {
@@ -102,6 +107,14 @@
 
 .s-txt {
   margin-top: 1rem;
+}
+
+.loader-spin {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
 }
 
 @media screen and (max-width: 1170px) {

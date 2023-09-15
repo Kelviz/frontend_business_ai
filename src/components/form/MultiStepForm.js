@@ -116,7 +116,7 @@ const MultiStepForm = ({ isAuthenticated }) => {
   };
 
   return (
-    <div className="form-data">
+    <div className="form-data main-pd ">
       {formSubmitted ? (
         <IdeaCard businessIdea={businessIdea} />
       ) : (

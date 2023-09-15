@@ -14,8 +14,10 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <About />
-      <ScrollCards />
+      <div className="main-pd ">
+        <About />
+        <ScrollCards />
+      </div>
     </div>
   );
 };
