@@ -36,6 +36,10 @@ const IdeaList = ({ isAuthenticated, userId }) => {
     fetchData();
   }, [isAuthenticated, userId, URL]);
 
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
   return (
     <div className="idea-container main-pd">
       <div className="idea-list">
