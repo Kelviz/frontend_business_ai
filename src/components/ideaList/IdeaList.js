@@ -37,7 +37,7 @@ const IdeaList = ({ isAuthenticated, userId }) => {
   }, [isAuthenticated, userId, URL]);
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" />; //navigate to login page if user is not authenticated
   }
 
   return (
