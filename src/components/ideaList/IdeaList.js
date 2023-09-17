@@ -54,7 +54,7 @@ const IdeaList = ({ isAuthenticated, userId }) => {
             <div className="idea-item" key={idea.id}>
               <Link to={`/idea-detail/${idea.id}`} className="idea-iteam-link">
                 <p>
-                  Industry: {idea.Industry}, Audience: {idea.audience}, Budget:{" "}
+                  Industry: {idea.industry}, Audience: {idea.audience}, Budget:{" "}
                   {idea.budget}
                 </p>
               </Link>
