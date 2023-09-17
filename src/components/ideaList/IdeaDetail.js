@@ -49,8 +49,13 @@ const IdeaDetail = ({ isAuthenticated }) => {
         <Link to="/idea-list" className="back-link">
           <img src={rightarrow} alt="arrow-right" />
         </Link>
-        <span className="idea-detail__head-text">{idea.industry}</span>
-        <span className="idea-detail__head-text">{idea.audience}</span>
+        <span className="idea-detail__head-text">
+          Industry: {idea.industry}
+        </span>
+        <span className="idea-detail__head-text">
+          Audience: {idea.audience}
+        </span>
+        <span className="idea-detail__head-text">Budget: {idea.budget}</span>
         {txt.map((word, index) => (
           <p key={index} className="s-txt">
             {`${index + 1}. ${word}`}{" "}

@@ -53,7 +53,10 @@ const IdeaList = ({ isAuthenticated, userId }) => {
           ideas.map((idea) => (
             <div className="idea-item" key={idea.id}>
               <Link to={`/idea-detail/${idea.id}`} className="idea-iteam-link">
-                <p>{idea.title}</p>
+                <p>
+                  Industry: {idea.Industry}, Audience: {idea.audience}, Budget:{" "}
+                  {idea.budget}
+                </p>
               </Link>
             </div>
           ))

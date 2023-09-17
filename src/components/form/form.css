@@ -114,7 +114,7 @@
 .prev:not(:nth-child(1n + 3)):hover:after,
 .next:not(:nth-child(1n + 3)):hover:before,
 .next:not(:nth-child(1n + 3)):hover:after {
-  background-color: #292b30;
+  opacity: 0.8;
 }
 
 .prev:not(:nth-child(1n + 3)):after {
